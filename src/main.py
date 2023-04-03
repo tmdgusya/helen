@@ -8,15 +8,18 @@ from langchain.schema import (
     HumanMessage,
     SystemMessage,
 )
+from nltk import sent_tokenize
 
 
-def parse(transcript_file):
+def parse(transcript_file) -> list[str]:
     """
-    parse function can separate a long sentence into a small sentence using a newline separator.
+    parse function can separate a long sentence into a small sentence using a nltk.
     :param transcript_file:
     :return:
     """
-    pass
+
+    transcript = transcript_file.read()
+    return sent_tokenize(text=transcript, language="english")
 
 
 if __name__ == "__main__":
@@ -33,15 +36,14 @@ if __name__ == "__main__":
     - I'll write student sentence as below format\n
         - student sentence: 'sentence'\n
     - You have to explain in detail why It is wrong.\n
-    - You can just answer whether the sentence grammatically wrong or correct. You don't care about whether the sentence true or not.\n
+    - You can just answer whether the sentence is grammatically wrong or correct. You don't need to care about whether the sentence is true or not.\n
     - You don't need to understand that the sentence is true or not. You explain why the sentence is grammatically wrong.\n
-    - Your answer must look something like this format(must!!)\n
+    - Your answer must be in this format\n
         - format:\n
             - original sentence(that written by me):\n
             - grammatically correct sentence:\n
             - explain(in-detail): (like bullet-form)\n
             - examples conversation(shortly):\n
-    \n
     
     You look only below sentence that written by student
     student sentence: {sentence}
@@ -54,15 +56,18 @@ if __name__ == "__main__":
 
     # set machine
     chat = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
+    memory = ConversationBufferWindowMemory(k=2)
     # combine machine and template
-    chain = LLMChain(llm=chat, prompt=prompt, verbose=True, memory=ConversationBufferWindowMemory(k=2))
+    chain = LLMChain(llm=chat, prompt=prompt, verbose=True, memory=memory)
 
     # load .txt file
-    # transcript_file = open("transcript.txt", "r")
-    # parse(transcript_file)
+    transcript_file = open("transcript.txt", "r")
+    sentences_of_transcript = parse(transcript_file)
 
-    result = chain.predict(sentence="""
-        'I'll type like below format'
-    """)
+    for sentence in sentences_of_transcript:
+        result = chain.predict(sentence=sentence)
+        print(result)
+        with open("fiexed_daytime.txt", "a") as f:
+            f.write(result)
+            f.write("/n")
 
-    print(result)
