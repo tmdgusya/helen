@@ -65,6 +65,11 @@ if __name__ == "__main__":
     sentences_of_transcript = parse(transcript_file)
 
     for sentence in sentences_of_transcript:
+        """
+        TODO: Batch Process
+        Because, Now we send only one sentence. 
+        But, We have to send folding sentence which means fold over two sentences.
+        """
         result = chain.predict(sentence=sentence)
         print(result)
         with open("../resources/review/fiexed_daytime.txt", "a") as f:
