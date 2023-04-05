@@ -14,15 +14,6 @@ class Audio:
         self.format = pyaudio.paInt16
         self.frame_late = 44100
 
-    def resize(self, frames) -> list[list[str]]:
-        """
-        Divide frames size to 2-dimensions array
-        Because, If you want to use audio file to put in whisper, then you have to resize them.
-        - whisper maximum minute is 10 minute.
-        :param frames:
-        :return: 2-dimensional binary array
-        """
-
     def record(self):
         """
         record the voice using desired device.
@@ -53,9 +44,6 @@ class Audio:
         sound_file.setnchannels(self.sound_channel)
         sound_file.setsampwidth(self.audio.get_sample_size(self.format))
         sound_file.setframerate(self.frame_late)
-
-        # this frame use
-        subframes = []
 
         if frames.__sizeof__() > 40000000:
             print("This is so big that create transcript")
