@@ -61,13 +61,13 @@ if __name__ == "__main__":
     chain = LLMChain(llm=chat, prompt=prompt, verbose=True, memory=memory)
 
     # load .txt file
-    transcript_file = open("transcript.txt", "r")
+    transcript_file = open("../resources/transcript/transcript.txt", "r")
     sentences_of_transcript = parse(transcript_file)
 
     for sentence in sentences_of_transcript:
         result = chain.predict(sentence=sentence)
         print(result)
-        with open("fiexed_daytime.txt", "a") as f:
+        with open("../resources/review/fiexed_daytime.txt", "a") as f:
             f.write(result)
             f.write("/n")
 
