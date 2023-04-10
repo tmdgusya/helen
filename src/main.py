@@ -8,18 +8,15 @@ from langchain.schema import (
     HumanMessage,
     SystemMessage,
 )
-from nltk import sent_tokenize
-
-
-def parse(transcript_file) -> list[str]:
-    """
-    parse function can separate a long sentence into a small sentence using a nltk.
-    :param transcript_file:
-    :return:
-    """
-
-    transcript = transcript_file.read()
-    return sent_tokenize(text=transcript, language="english")
+from audio.const import (
+    REVIEW_FOLDER_NAME,
+    TRANSCRIPT_FOLDER_NAME
+)
+from utils import (
+    create_folder,
+    day_time_generator
+)
+from nlp.TokenUtils import parse
 
 
 if __name__ == "__main__":
@@ -61,8 +58,9 @@ if __name__ == "__main__":
     chain = LLMChain(llm=chat, prompt=prompt, verbose=True, memory=memory)
 
     # load .txt file
-    transcript_file = open("../resources/transcript/transcript.txt", "r")
-    sentences_of_transcript = parse(transcript_file)
+    # replace this code to get fileName from Transcript function
+    sentences_of_transcript = parse(f"{TRANSCRIPT_FOLDER_NAME}/transcript_{day_time_generator()}.txt")
+    create_folder(REVIEW_FOLDER_NAME)
 
     for sentence in sentences_of_transcript:
         """
@@ -72,7 +70,7 @@ if __name__ == "__main__":
         """
         result = chain.predict(sentence=sentence)
         print(result)
-        with open("../resources/review/fiexed_daytime.txt", "a") as f:
+        with open(f"{REVIEW_FOLDER_NAME}/fiexed_daytime.txt", "a") as f:
             f.write(result)
             f.write("/n")
 
