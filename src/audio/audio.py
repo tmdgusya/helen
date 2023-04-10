@@ -1,5 +1,6 @@
 import pyaudio
 import wave
+from src import utils
 
 
 class Audio:
@@ -40,13 +41,10 @@ class Audio:
         stream.close()
         self.audio.terminate()
 
-        sound_file = wave.open("test.wav", "wb")
+        sound_file = wave.open(f"{utils.day_time_generator()}.wav", "wb")
         sound_file.setnchannels(self.sound_channel)
         sound_file.setsampwidth(self.audio.get_sample_size(self.format))
         sound_file.setframerate(self.frame_late)
-
-        if frames.__sizeof__() > 40000000:
-            print("This is so big that create transcript")
 
         sound_file.writeframes(b''.join(frames))
         sound_file.close()
