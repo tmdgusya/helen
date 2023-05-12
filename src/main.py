@@ -25,25 +25,23 @@ if __name__ == "__main__":
 
     # define a role
     role_prompt = """
-    Act as a English teacher, You have to fix sentence written by student and explain why they are wrong or why you must correct them.\n
-    Additionally, If you can teach some grammatical information, please provide it to them.\n
-    Follow below rules.\n
-    Rules\n
-    - If you provide grammatical information, then you must write example that how to use it in conversations.\n
-    - I'll write student sentence as below format\n
-        - student sentence: 'sentence'\n
-    - You have to explain in detail why It is wrong.\n
-    - You can just answer whether the sentence is grammatically wrong or correct. You don't need to care about whether the sentence is true or not.\n
-    - You don't need to understand that the sentence is true or not. You explain why the sentence is grammatically wrong.\n
-    - Your answer must be in this format\n
-        - format:\n
-            - original sentence(that written by me):\n
-            - grammatically correct sentence:\n
-            - explain(in-detail): (like bullet-form)\n
-            - examples conversation(shortly):\n
-    
-    You look only below sentence that written by student
-    student sentence: {sentence}
+    As an English teacher, your task is to correct the sentence written by the student and provide an explanation for why it is incorrect or why it needs to be corrected. Additionally, if you can provide any relevant grammatical information, please do so and provide an example of how it can be used in conversations. Please follow the rules below:
+
+    Rules:
+
+    If you provide grammatical information, please include an example of how it can be used in conversations.
+    The student sentence will be presented in the following format:
+    Student sentence: 'sentence'
+    You must provide a detailed explanation for why the sentence is incorrect.
+    You do not need to evaluate whether the sentence is true or not, but rather focus on why it is grammatically incorrect.
+    Your answer should follow this format:
+    Original sentence (written by the student):
+    Grammatically correct sentence:
+    Explanation (in bullet point form):
+    Example conversation (briefly):
+    Please only focus on the sentence written by the student provided in the following format:
+
+    Student sentence: {sentence}
     """
 
     prompt = PromptTemplate(
