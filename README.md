@@ -1,23 +1,23 @@
 # Helen
 
 Helen is a good **english teacher** and can help you **improve your speaking habits.**
-Helen provide some features which can help during your speaking time.
+Helen provide some features that can help during your speaking time.
 
 ---
-Helen is **beta project**. I wish I make the project to be **visualized** using typescript and next.js. That is my goal. So, I'm going to write the code using **Typescript** and **Next.js** and **langchainJs**. I think If I make the program, So many people use the program and It would be helpful for learning english.
+Helen is **beta project**. I wish I make the project to be **visualized** using typescript and next.js. That is my goal. So, I'm going to write the code using **Typescript** and **Next.js** and **langchainJs**.
 
 ## Features
 
 ### Record feature
 
 You **can record your voice** when you are talking with someone. 
-The voice file will be saved `resources` folder. The voice file will be separated per 3 minutes.
+The voice file will be located `resources` folder. The voice file will be separated by 3 minutes.
 
 <img width="293" alt="image" src="https://github.com/tmdgusya/helen/assets/57784077/5cf5ef85-7a84-4212-aabc-1ac191be6dae">
 
 **[folder structure]**
 
-The structure of resource folder follow **below structure**
+The structure of resource folder follow as **below structure**
 
 ```
 - resources
@@ -34,7 +34,7 @@ The structure of resource folder follow **below structure**
 
 <img width="386" alt="image" src="https://github.com/tmdgusya/helen/assets/57784077/2eac0a31-e1a3-4859-80fa-c327155eda09">
 
-We'll fix the feature that can record system sound. Because, I think we need to record voice each others and separate the voice to make transcript. I think we'll use the hugging face to separate voice.
+We'll fix the feature that can record system sound. Because, I think we need to separate voice file to each person's sentence and separate the voice to make transcript. I think we'll use the hugging face to separate voice.
 
 ### Transcript feature
 
