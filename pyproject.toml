@@ -1,9 +1,10 @@
 [tool.poetry]
-name = "pythonproject"
+name = "src"
 version = "0.1.0"
-description = ""
+description = "Helen is a good english teacher"
 authors = ["정승현 <tmdgusya@naver.com>"]
 readme = "README.md"
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"

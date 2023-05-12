@@ -30,6 +30,8 @@ class Whisper:
 if __name__ == "__main__":
     whisper = Whisper()
 
+    print("Start to create transcript")
+
     files = utils.get_files(const.AUDIO_FOLDER_NAME)
     """sort by natural order"""
     files.sort()

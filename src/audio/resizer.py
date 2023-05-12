@@ -2,7 +2,8 @@ from src import utils
 from pydub import AudioSegment
 import math
 from const import (
-    AUDIO_FOLDER_NAME
+    AUDIO_FOLDER_NAME,
+    ORIGINAL_AUDIO_FOLDER_NAME
 )
 
 
@@ -55,5 +56,5 @@ class Resizer:
 
 
 if __name__ == "__main__":
-    resizer = Resizer("../../test.wav")
+    resizer = Resizer(f"../../{ORIGINAL_AUDIO_FOLDER_NAME}/{utils.day_time_generator()}.wav")
     resizer.resize()
