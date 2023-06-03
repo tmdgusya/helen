@@ -3,6 +3,8 @@
 Helen is a good **english teacher** and can help you **improve your speaking habits.**
 Helen provide some features that can help during your speaking time.
 
+![image](https://github.com/tmdgusya/helen/assets/57784077/c21264a1-3dcc-4ec6-9d39-751a34c0311e)
+
 ---
 Helen is **beta project**. I wish I make the project to be **visualized** using typescript and next.js. That is my goal. So, I'm going to write the code using **Typescript** and **Next.js** and **langchainJs**.
 
